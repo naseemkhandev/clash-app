@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export const BoxesCore = ({
+export const BackgroundBoxes = ({
   className,
   children,
   ...rest
@@ -83,4 +83,4 @@ export const BoxesCore = ({
   );
 };
 
-export const Boxes = React.memo(BoxesCore);
+export const Boxes = React.memo(BackgroundBoxes);
