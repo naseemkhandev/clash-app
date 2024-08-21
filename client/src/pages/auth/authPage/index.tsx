@@ -15,16 +15,17 @@ const AuthPage = () => {
   });
   const isError = false;
   const isLoading = false;
+  const error = "Invalid email or password";
 
   const { pathname } = useLocation();
   const path = pathname.split("/").pop();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     console.log("user", user);
@@ -32,7 +33,7 @@ const AuthPage = () => {
 
   return (
     <CardSpotlight className="bg-slate-500/5 backdrop-blur-md text-black max-w-lg w-full !z-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-10 rounded-xl flex items-center justify-center border border-white/20">
-      <div className="mx-auto grid w-full gap-6 z-10">
+      <form onSubmit={handleSubmit} className="mx-auto grid w-full gap-6 z-10">
         <div className="grid gap-2 text-center">
           <h1 className="text-3xl font-bold text-white">
             {path === "register" ? "Register Yourself" : "Login"}
@@ -99,14 +100,11 @@ const AuthPage = () => {
           </div>
 
           {isError && (
-            <p className="text-red-500 text-sm -my-2 font-medium">
-              {error?.data?.message}
-            </p>
+            <p className="text-red-500 text-sm -my-2 font-medium">{error}</p>
           )}
 
           <Button
             isLoading={isLoading}
-            onClick={handleSubmit}
             type="submit"
             className="w-full"
           >
@@ -141,7 +139,7 @@ const AuthPage = () => {
             {path === "register" ? "Login" : "Register"}
           </Link>
         </div>
-      </div>
+      </form>
     </CardSpotlight>
   );
 };
