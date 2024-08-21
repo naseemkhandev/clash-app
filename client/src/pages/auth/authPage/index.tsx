@@ -103,11 +103,7 @@ const AuthPage = () => {
             <p className="text-red-500 text-sm -my-2 font-medium">{error}</p>
           )}
 
-          <Button
-            isLoading={isLoading}
-            type="submit"
-            className="w-full"
-          >
+          <Button isLoading={isLoading} type="submit" className="w-full">
             {path === "register" ? "Register" : "Login"}
           </Button>
 
