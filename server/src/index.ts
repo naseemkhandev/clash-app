@@ -16,7 +16,19 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "./views"));
 
 app.get("/", (req: Request, res: Response) => {
-  return res.render("test", { title: "Home" });
+  return res.render("emails/email", {
+    name: "Naseem Khan",
+    date: new Date().toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }),
+    time: new Date().toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+    year: new Date().getFullYear(),
+  });
 });
 
 app.listen(PORT, () => {
