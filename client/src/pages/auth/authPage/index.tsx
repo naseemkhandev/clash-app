@@ -32,7 +32,7 @@ const AuthPage = () => {
   };
 
   return (
-    <CardSpotlight className="bg-slate-500/20 backdrop-blur-lg text-black max-w-lg w-full !z-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-10 rounded-xl flex items-center justify-center border border-white/20">
+    <CardSpotlight className="bg-slate-500/20 backdrop-blur-lg text-black max-w-lg w-full !z-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-5 py-10 sm:p-10 rounded-xl flex items-center justify-center border border-white/20">
       <form onSubmit={handleSubmit} className="mx-auto grid w-full gap-6 z-10">
         <div className="absolute bg-sky-500 -top-20 -left-20 w-64 aspect-square rounded-full !-z-[50000] blur-xl opacity-80"></div>
         <div className="absolute bg-orange-500 -bottom-20 -right-20 w-64 aspect-square rounded-full !-z-[50000] blur-xl opacity-80"></div>
