@@ -3,8 +3,10 @@ import "dotenv/config";
 import path from "path";
 import { fileURLToPath } from "url";
 import ejs from "ejs";
-import { sendMail } from "./config/emali.js";
 import { getCurrentDate, getCurrentTime } from "./utils/getCurrentDateTime.js";
+import { emailQueue, emailQueueName } from "./jobs/emailJob.js";
+import "./jobs/index.js";
+import authRoutes from "./routes/auth.routea.js";
 
 const app: Application = express();
 const PORT = process.env.PORT || 3000;
@@ -40,8 +42,7 @@ app.get("/", async (req: Request, res: Response) => {
   }
 });
 
-import "./jobs/index.js";
-import { emailQueue, emailQueueName } from "./jobs/emailJob.js";
+app.use("/api/v1/auth", authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
