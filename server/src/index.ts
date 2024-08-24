@@ -27,20 +27,21 @@ app.get("/", async (req: Request, res: Response) => {
       year: new Date().getFullYear(),
     });
 
-    await sendMail("powiyef230@kwalah.com", "Test Email", html);
+    await emailQueue.add(emailQueueName, {
+      to: "kesoji2118@inpsur.com",
+      subject: "Test Email",
+      body: html,
+    });
 
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    if (error.responseCode === 502) {
-      return res.status(502).json({
-        message: "SMTP account not activated. Please contact support.",
-      });
-    }
-    return res
-      .status(500)
-      .json({ message: "An error occurred while sending the email." });
+    console.error(error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 });
+
+import "./jobs/index.js";
+import { emailQueue, emailQueueName } from "./jobs/emailJob.js";
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

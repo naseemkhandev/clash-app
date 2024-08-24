@@ -5,7 +5,7 @@ export const redisConnection: ConnectionOptions = {
   port: parseInt(process.env.REDIS_PORT),
 };
 
-export const defaultQueueOptions: DefaultJobOptions = {
+export const defaultJobOptions: DefaultJobOptions = {
   removeOnComplete: {
     count: 20, // Remove job after 20 successful completions
     age: 60 * 60, // Remove job after 1 hour
